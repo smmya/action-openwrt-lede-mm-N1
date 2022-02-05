@@ -9,7 +9,7 @@
 # Description: Source code update checker
 #
 
-name: Update Checker
+name: Update Checker For N1
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
@@ -18,7 +18,7 @@ env:
 on:
   workflow_dispatch:
 #  schedule:
-#    - cron: 0 */18 * * *
+#    - cron: 0 */12 * * *
 
 jobs:
   check:
