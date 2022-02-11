@@ -63,7 +63,7 @@ jobs:
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         
     
-    - name: Load custom feeds
+    - name: neofetch
       run: |
         neofetch
 
