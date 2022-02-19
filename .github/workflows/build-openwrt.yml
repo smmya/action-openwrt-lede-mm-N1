@@ -59,10 +59,9 @@ jobs:
         
     - name: download build tool
       run: |
-        cd /
         sudo mkdir make_docker
-        sudo  cd /make_docker && wget http://soft.zhujitips.com/n1/7.docker/make_opwrt_docker_img.tar.gz
-        sudo  cd /make_docker && tar -zxvf make_opwrt_docker_img.tar.gz
+        sudo  cd ~/make_docker && wget http://soft.zhujitips.com/n1/7.docker/make_opwrt_docker_img.tar.gz
+        sudo  cd ~/make_docker && tar -zxvf make_opwrt_docker_img.tar.gz
 
 
 
