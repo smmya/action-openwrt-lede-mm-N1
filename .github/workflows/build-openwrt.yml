@@ -51,7 +51,8 @@ jobs:
         sudo -E apt-get -qq install neofetch
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
-        sudo curl -fsSL https://get.docker.com | sudo bash
+        sudo -E curl -fsSL https://get.docker.com | sudo bash
+        sudo -E apt-get install pigz
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
@@ -135,7 +136,7 @@ jobs:
     - name: build image
       run: |
        cp /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/openwrt/bin/targets/armvirt/64/openwrt-armvirt-64-default-rootfs.tar.gz  /make_docker/make_dockermake_opwrt_docker_img/
-       cd /make_docker/make_dockermake_opwrt_docker_img && sudo bash build.sh latest
+       cd /make_docker/make_dockermake_opwrt_docker_img && sudo -E bash build.sh latest
        cp /opt/imgs/docker/docker-img-openwrt-aarch64-latest.gz /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/openwrt/bin/targets/armvirt/64/
       
     - name: Check space usage
