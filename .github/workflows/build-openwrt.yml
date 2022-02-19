@@ -56,6 +56,13 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
+        
+    - name: download build tool
+      run: |
+        cd /
+        sudo mkdir make_docker
+        sudo  cd /make_docker && wget http://soft.zhujitips.com/n1/7.docker/make_opwrt_docker_img.tar.gz
+        sudo  cd /make_docker && tar -zxvf make_opwrt_docker_img.tar.gz
 
 
 
@@ -108,11 +115,6 @@ jobs:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
                 
-    - name: download build tool
-      run: |
-        sudo -E cd / && sudo -E mkdir make_docker
-        sudo -E cd /make_docker && wget http://soft.zhujitips.com/n1/7.docker/make_opwrt_docker_img.tar.gz
-        sudo -E cd /make_docker && tar -zxvf make_opwrt_docker_img.tar.gz
 
     - name: Download package 
       id: package
