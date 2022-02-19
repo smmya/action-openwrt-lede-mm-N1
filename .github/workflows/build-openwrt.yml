@@ -111,7 +111,7 @@ jobs:
     - name: download build tool
       run: |
         sudo -E cd / && sudo -E mkdir make_docker
-        sudo -E cd /make_docker wget http://soft.zhujitips.com/n1/7.docker/make_opwrt_docker_img.tar.gz
+        sudo -E cd /make_docker && wget http://soft.zhujitips.com/n1/7.docker/make_opwrt_docker_img.tar.gz
         sudo -E cd /make_docker && tar -zxvf make_opwrt_docker_img.tar.gz
 
     - name: Download package 
