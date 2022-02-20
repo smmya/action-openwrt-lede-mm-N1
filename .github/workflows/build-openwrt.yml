@@ -59,9 +59,10 @@ jobs:
         
     - name: download build tool
       run: |
+        cd /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/
         sudo mkdir make_docker
-        cd ~/make_docker && wget http://soft.zhujitips.com/n1/7.docker/make_opwrt_docker_img.tar.gz
-        cd ~/make_docker && tar -zxvf make_opwrt_docker_img.tar.gz
+        cd /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/make_docker && wget http://soft.zhujitips.com/n1/7.docker/make_opwrt_docker_img.tar.gz
+        cd /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/make_docker && tar -zxvf make_opwrt_docker_img.tar.gz
 
 
 
@@ -138,8 +139,8 @@ jobs:
 
     - name: build image
       run: |
-       cp /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/openwrt/bin/targets/armvirt/64/openwrt-armvirt-64-default-rootfs.tar.gz  ~/make_docker/make_dockermake_opwrt_docker_img/
-       cd ~/make_docker/make_dockermake_opwrt_docker_img && sudo -E bash build.sh latest
+       cp /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/openwrt/bin/targets/armvirt/64/openwrt-armvirt-64-default-rootfs.tar.gz  /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/make_docker/make_dockermake_opwrt_docker_img/
+       cd /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/make_docker/make_dockermake_opwrt_docker_img && sudo bash build.sh latest
        cp /opt/imgs/docker/docker-img-openwrt-aarch64-latest.gz /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/openwrt/bin/targets/armvirt/64/
       
     - name: Check space usage
