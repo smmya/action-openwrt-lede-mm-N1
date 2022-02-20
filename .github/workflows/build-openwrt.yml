@@ -70,7 +70,7 @@ jobs:
         cd /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/
         sudo mkdir make_docker
         cd /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/make_docker && wget http://soft.zhujitips.com/n1/7.docker/make_opwrt_docker_img.tar.gz
-        cd /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/make_docker && tar -zxvf make_opwrt_docker_img.tar.gz
+        cd /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/make_docker && sudo -E tar -zxvf make_opwrt_docker_img.tar.gz
 
 
         
