@@ -57,6 +57,14 @@ jobs:
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
         
+
+    - name: Clone source code
+      working-directory: /workdir
+      run: |
+        df -hT $PWD
+        git clone $REPO_URL -b $REPO_BRANCH openwrt
+        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        
     - name: download build tool
       run: |
         cd /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/
@@ -65,13 +73,6 @@ jobs:
         cd /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/make_docker && tar -zxvf make_opwrt_docker_img.tar.gz
 
 
-
-    - name: Clone source code
-      working-directory: /workdir
-      run: |
-        df -hT $PWD
-        git clone $REPO_URL -b $REPO_BRANCH openwrt
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         
     
     - name: neofetch
