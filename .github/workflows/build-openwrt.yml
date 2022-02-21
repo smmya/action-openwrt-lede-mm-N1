@@ -69,7 +69,7 @@ jobs:
       run: |
         cd /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/ && sudo mkdir make_docker
         cd /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/make_docker && sudo -E wget https://github.com/smmya/make_op_n1/archive/refs/heads/main.zip
-        cd /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/make_docker && sudo -E unzip make_op_n1-main.zip
+        cd /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/make_docker && sudo -E unzip main.zip
         
     - name: neofetch
       run: |
