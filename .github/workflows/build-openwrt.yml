@@ -67,9 +67,9 @@ jobs:
         
     - name: download build tool
       run: |
-        cd /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/ && sudo mkdir make_docker
-        cd /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/make_docker && sudo -E wget https://github.com/smmya/make_op_n1/archive/refs/heads/main.zip
-        cd /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/make_docker && sudo -E unzip main.zip
+        cd $GITHUB_WORKSPACE/ && sudo mkdir make_docker
+        cd $GITHUB_WORKSPACE/make_docker && sudo -E wget https://github.com/smmya/make_op_n1/archive/refs/heads/main.zip
+        cd $GITHUB_WORKSPACE/make_docker && sudo -E unzip main.zip
         
     - name: neofetch
       run: |
@@ -136,8 +136,8 @@ jobs:
 
     - name: build docker image
       run: |
-       sudo -E cp /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/openwrt/bin/targets/armvirt/64/openwrt-armvirt-64-default-rootfs.tar.gz  /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/make_docker/make_op_n1-main/
-       cd /home/runner/work/action-openwrt-lede-mm-N1/action-openwrt-lede-mm-N1/make_docker/make_op_n1-main && sudo -E bash build.sh latest
+       sudo -E cp $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64/openwrt-armvirt-64-default-rootfs.tar.gz  $GITHUB_WORKSPACE/make_docker/make_op_n1-main/
+       cd $GITHUB_WORKSPACE/make_docker/make_op_n1-main && sudo -E bash build.sh latest
       
     - name: Check space usage
       if: (!cancelled())
