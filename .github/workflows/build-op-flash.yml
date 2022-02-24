@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build OpenWrt for N1 flash
+name: Build Op for N1-flash
 
 on:
   repository_dispatch:
