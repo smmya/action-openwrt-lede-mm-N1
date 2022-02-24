@@ -143,7 +143,19 @@ jobs:
          PACKAGED_OUTPUTPATH: $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64/
          SCRIPT_S905D: mk_s905d_n1.sh
   
-    
+    - name: Upload OpenWrt Firmware to Release
+      uses: ncipollo/release-action@v1
+      with:
+       tag: openwrt_armvirt_v8_${{ env.PACKAGED_OUTPUTDATE }}
+       artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
+       allowUpdates: true
+       token: ${{ secrets.GITHUB_TOKEN }}
+       body: |
+        This is OpenWrt firmware for N1
+        * Firmware information
+        Default IP: 192.168.123.253
+        Default username: root
+        Default password: password
    
    
 
