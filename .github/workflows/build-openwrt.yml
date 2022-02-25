@@ -71,6 +71,8 @@ jobs:
         sleep 10
         cd /workdir/openwrt && ls
         sleep 10
+        cd $GITHUB_WORKSPACE && ls
+        sleep 10
         ls
         
     - name: download build tool
