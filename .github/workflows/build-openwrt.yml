@@ -82,13 +82,20 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
-    - name: deal with feeds
-      run: |
-        cd openwrt && ./scripts/feeds update -a
-        cd openwrt && ./scripts/feeds install -a
-        cd openwrt && rm -rf ./feeds
-        cd openwrt && ./scripts/feeds update -a
-        cd openwrt && ./scripts/feeds install -a 
+      - name: Update feeds
+      run: cd openwrt && ./scripts/feeds update -a
+
+    - name: Install feeds
+      run: cd openwrt && ./scripts/feeds install -a
+      
+    - name: rmrf
+      run: cd openwrt && rm -rf ./feeds
+      
+    - name: Update feeds1
+      run: cd openwrt && ./scripts/feeds update -a
+
+    - name: Install feeds1
+      run: cd openwrt && ./scripts/feeds install -a
 
     - name: Load custom configuration
       run: |
