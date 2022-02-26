@@ -161,7 +161,9 @@ jobs:
        cd $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64/ && sudo -E mv openwrt-armvirt-64-default-rootfs.tar.gz flash-openwrt-armvirt-64-default-rootfs.tar.gz
        sudo -E cp -r /opt/openwrt_packit/output/* $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64
        sudo -E rm -rf $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64/openwrt-armvirt-64-default-rootfs.tar.gz
-       
+       sudo -E rm -rf $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64/feeds.buildinfo
+       sudo -E rm -rf $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64/openwrt-armvirt-64-default.manifest
+       sudo -E rm -rf $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64/config.buildinfo
       
     - name: Check space usage
       if: (!cancelled())
