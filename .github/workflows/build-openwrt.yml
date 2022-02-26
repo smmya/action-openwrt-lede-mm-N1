@@ -84,7 +84,7 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
     - name: deal with feeds
-      run: 
+      run: |
        cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
        cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
        sudo -E rm -rf $GITHUB_WORKSPACE/openwrt/feeds
