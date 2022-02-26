@@ -83,20 +83,13 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
-    - name: Update feeds
-      run: cd openwrt && ./scripts/feeds update -a
-
-    - name: Install feeds
-      run: cd openwrt && ./scripts/feeds install -a
-      
-    - name: rmrf
-      run: cd openwrt && rm -rf ./feeds
-      
-    - name: Update feeds1
-      run: cd openwrt && ./scripts/feeds update -a
-
-    - name: Install feeds1
-      run: cd openwrt && ./scripts/feeds install -a
+    - name: deal with feeds
+      run: 
+       cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
+       cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
+       cd $GITHUB_WORKSPACE/openwrt && sudo -E rm -rf ./feeds
+       cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
+       cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
 
     - name: Load custom configuration
       run: |
@@ -167,7 +160,7 @@ jobs:
       run: |
        cd $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64/ && sudo -E mv openwrt-armvirt-64-default-rootfs.tar.gz flash-openwrt-armvirt-64-default-rootfs.tar.gz
        sudo -E cp -r /opt/openwrt_packit/output/* $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64
-       rm -rf $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64/openwrt-armvirt-64-default-rootfs.tar.gz
+       sudo -E rm -rf $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64/openwrt-armvirt-64-default-rootfs.tar.gz
        
       
     - name: Check space usage
