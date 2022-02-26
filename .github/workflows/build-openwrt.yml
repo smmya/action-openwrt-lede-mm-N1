@@ -87,7 +87,7 @@ jobs:
       run: 
        cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
        cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
-       cd $GITHUB_WORKSPACE/openwrt && sudo -E rm -rf ./feeds
+       sudo -E rm -rf $GITHUB_WORKSPACE/openwrt/feeds
        cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
        cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
 
