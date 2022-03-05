@@ -31,6 +31,7 @@ env:
   UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: false
   UPLOAD_RELEASE: true
+  UPLOAD_DOCKERHUB: true
   TZ: Asia/Shanghai
 
 jobs:
@@ -134,6 +135,14 @@ jobs:
        cd $GITHUB_WORKSPACE/make_docker/make_op_n1-main && sudo -E bash build.sh latest
        cp -f $GITHUB_WORKSPACE/flash/.config $GITHUB_WORKSPACE/openwrt/
        cd $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64/ && sudo -E mv openwrt-armvirt-64-default-rootfs.tar.gz docker-openwrt-armvirt-64-default-rootfs.tar.gz
+       
+    - name: push docker hub
+      id: push
+      if: env.UPLOAD_DOCKERHUB == 'true' && !cancelled()
+      run: |
+         cd $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64/ && docker load --input docker-img-openwrt-aarch64-latest.gz
+         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
+         docker push smmya/openwrt-aarch64-n1:latest
        
     - name: Compile the firmware for flash
       id: compile2
