@@ -77,6 +77,14 @@ jobs:
       run: |
         neofetch
 
+    - name: deal with feeds for docker
+      run: |
+         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
+         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
+         sudo -E rm -rf $GITHUB_WORKSPACE/openwrt/feeds
+         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
+         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
+    
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
@@ -93,14 +101,6 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
         
-    - name: deal with feeds for docker
-      run: |
-         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
-         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
-         sudo -E rm -rf $GITHUB_WORKSPACE/openwrt/feeds
-         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
-         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
-
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
@@ -147,9 +147,6 @@ jobs:
          
     - name: deal with feeds for flash
       run: |
-         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
-         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
-         sudo -E rm -rf $GITHUB_WORKSPACE/openwrt/feeds
          cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
          cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
        
