@@ -84,13 +84,6 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
-    - name: deal with feeds
-      run: |
-       cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
-       cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
-       sudo -E rm -rf $GITHUB_WORKSPACE/openwrt/feeds
-       cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
-       cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
 
     - name: Load custom configuration
       run: |
@@ -99,6 +92,14 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
+        
+    - name: deal with feeds for docker
+      run: |
+         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
+         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
+         sudo -E rm -rf $GITHUB_WORKSPACE/openwrt/feeds
+         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
+         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
@@ -143,6 +144,14 @@ jobs:
          cd $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64/ && docker load --input docker-img-openwrt-aarch64-latest.gz
          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
          docker push smmya/openwrt-aarch64-n1:latest
+         
+    - name: deal with feeds for docker
+      run: |
+         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
+         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
+         sudo -E rm -rf $GITHUB_WORKSPACE/openwrt/feeds
+         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
+         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
        
     - name: Compile the firmware for flash
       id: compile2
