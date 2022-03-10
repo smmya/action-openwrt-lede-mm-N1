@@ -145,7 +145,7 @@ jobs:
          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_TOKEN }}
          docker push smmya/openwrt-aarch64-n1:latest
          
-    - name: deal with feeds for docker
+    - name: deal with feeds for flash
       run: |
          cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
          cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
