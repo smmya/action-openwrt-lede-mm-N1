@@ -77,13 +77,6 @@ jobs:
       run: |
         neofetch
 
-    - name: deal with feeds for docker
-      run: |
-         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
-         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
-         sudo -E rm -rf $GITHUB_WORKSPACE/openwrt/feeds
-         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
-         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
     
     - name: Load custom feeds
       run: |
@@ -91,7 +84,14 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
-
+        
+    - name: deal with feeds for docker
+      run: |
+         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
+         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
+         sudo -E rm -rf $GITHUB_WORKSPACE/openwrt/feeds
+         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
+         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
 
     - name: Load custom configuration
       run: |
