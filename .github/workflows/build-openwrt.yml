@@ -67,11 +67,6 @@ jobs:
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         
         
-    - name: download build tool
-      run: |
-        cd $GITHUB_WORKSPACE/ && sudo mkdir make_docker
-        cd $GITHUB_WORKSPACE/make_docker && sudo -E wget https://github.com/smmya/make_op_n1/archive/refs/heads/main.zip
-        cd $GITHUB_WORKSPACE/make_docker && sudo -E unzip main.zip
         
     - name: neofetch
       run: |
@@ -134,6 +129,8 @@ jobs:
 
     - name: build docker image
       run: |
+       cd $GITHUB_WORKSPACE/ && sudo mkdir make_docker
+       cd $GITHUB_WORKSPACE/make_docker && git clone https://github.com/smmya/make_op_n1.git make_op_n1-main
        sudo -E cp $GITHUB_WORKSPACE/openwrt/bin/targets/armvirt/64/openwrt-armvirt-64-default-rootfs.tar.gz  $GITHUB_WORKSPACE/make_docker/make_op_n1-main/
        cd $GITHUB_WORKSPACE/make_docker/make_op_n1-main && sudo -E bash build.sh latest
        cp -f $GITHUB_WORKSPACE/flash/.config $GITHUB_WORKSPACE/openwrt/
