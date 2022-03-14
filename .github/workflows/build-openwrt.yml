@@ -33,6 +33,8 @@ env:
   UPLOAD_RELEASE: true
   UPLOAD_DOCKERHUB: true
   TZ: Asia/Shanghai
+  REPO_BUILD: https://github.com/smmya/make_op_n1
+  REPO_BUILD_BRANCH: main
 
 jobs:
   build:
