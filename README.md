@@ -1,6 +1,6 @@
 **English** | [中文](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
 
-# Actions-OpenWrt
+# Actions-OpenWrt-N1
 
 斐讯N1工作流，同时编译docker版和刷入版
 
