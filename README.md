@@ -5,7 +5,9 @@
 斐讯N1工作流，同时编译docker版和刷入版
 
 根目录中的 .config 为docker版配置
+
 /flash目录中的 .config 为刷入版配置
+
 注意feed.config是否使用相同，否则可能会失败
 
 ## Usage
