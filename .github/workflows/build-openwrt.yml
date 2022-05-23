@@ -222,7 +222,13 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         cp -f $GITHUB_WORKSPACE/flash/.config $GITHUB_WORKSPACE/openwrt/
-          
+        ls
+        sleep 5
+        cd $GITHUB_WORKSPACE && ls
+        sleep 5
+        cd $GITHUB_WORKSPACE/flash && ls
+        sleep 5
+        cd $GITHUB_WORKSPACE/flash/flash && ls
         
     - name: neofetch
       run: |
