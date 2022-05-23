@@ -226,9 +226,9 @@ jobs:
         sleep 5
         cd $GITHUB_WORKSPACE && ls
         sleep 5
-        cd $GITHUB_WORKSPACE/flash && ls
+        cd $GITHUB_WORKSPACE/flash && ls -a
         sleep 5
-        cd $GITHUB_WORKSPACE/flash/flash && ls
+        cd $GITHUB_WORKSPACE/flash/flash && ls -a
         
     - name: neofetch
       run: |
