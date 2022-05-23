@@ -48,9 +48,11 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        ls
+        cd $GITHUB_WORKSPACE/flash ls
         sleep 10
         cd $GITHUB_WORKSPACE/ && ls
+        sleep 10
+        ls
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update
         sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-2004)
