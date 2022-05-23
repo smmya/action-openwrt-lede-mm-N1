@@ -221,15 +221,7 @@ jobs:
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-        cp -f $GITHUB_WORKSPACE/flash/.config $GITHUB_WORKSPACE/openwrt/
-        ls
-        sleep 5
-        cd $GITHUB_WORKSPACE && ls
-        sleep 5
-        cd $GITHUB_WORKSPACE/flash && ls -a
-        sleep 5
-        cd $GITHUB_WORKSPACE/flash/flash && ls -a
-        
+
     - name: neofetch
       run: |
         neofetch
@@ -249,6 +241,7 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
+        cp -f $GITHUB_WORKSPACE/flash/.config $GITHUB_WORKSPACE/openwrt/
         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
         
