@@ -48,7 +48,7 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        cd $GITHUB_WORKSPACE/flash ls
+        cd $GITHUB_WORKSPACE/flash && ls
         sleep 10
         cd $GITHUB_WORKSPACE/ && ls
         sleep 10
