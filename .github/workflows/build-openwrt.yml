@@ -176,7 +176,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "::set-output name=release_tag::斐讯N1-docker版本$(date +"%Y.%m.%d-%H%M")"
+        echo "::set-output name=release_tag::斐讯N1-docker-$(date +"%Y.%m.%d-%H%M")"
         touch release.txt
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
@@ -241,7 +241,7 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        cp -f $GITHUB_WORKSPACE/flash/.config $GITHUB_WORKSPACE/openwrt/
+        cp -f $GITHUB_WORKSPACE/flash/.config $GITHUB_WORKSPACE/openwrt/.config
         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
         
@@ -315,7 +315,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "::set-output name=release_tag::斐讯N1-flash版本$(date +"%Y.%m.%d-%H%M")"
+        echo "::set-output name=release_tag::斐讯N1-flash-$(date +"%Y.%m.%d-%H%M")"
         touch release.txt
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
