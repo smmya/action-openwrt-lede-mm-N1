@@ -234,14 +234,21 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
         
+    - name: deal with feeds for flash
+      run: |
+         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
+         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
+         sudo -E rm -rf $GITHUB_WORKSPACE/openwrt/feeds
+         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
+         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
 
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
+        cp -f $GITHUB_WORKSPACE/flash/.config $GITHUB_WORKSPACE/openwrt/
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        cp -f $GITHUB_WORKSPACE/flash/.config $GITHUB_WORKSPACE/openwrt/.config
         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds update -a
         cd $GITHUB_WORKSPACE/openwrt && ./scripts/feeds install -a
         
