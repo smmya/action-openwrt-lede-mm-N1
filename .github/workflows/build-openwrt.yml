@@ -154,7 +154,7 @@ jobs:
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
         name: docker_OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        path: openwrt/bin/packages
+        path: openwrt/bin/targets
 
     - name: Organize files
       id: organize
@@ -299,7 +299,7 @@ jobs:
       uses: actions/upload-artifact@main
       with:
         name: flash_OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        path: openwrt/bin/packages
+        path: openwrt/bin/targets
 
     - name: Organize files
       id: organize
